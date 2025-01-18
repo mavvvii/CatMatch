@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'user',
+    'cats',
 ]
 
 MIDDLEWARE = [
@@ -73,6 +74,9 @@ SIMPLE_JWT = {
     'SIGNING_KEY': 'your-secret-key',
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 ROOT_URLCONF = 'CatMatch.urls'
 
