@@ -13,6 +13,7 @@ from uuid import UUID
 
 class CatViewSet(viewsets.ModelViewSet):
     permission_classes: List[Type[BasePermission]] = [AllowAny]
+
     lookup_field: str = 'id'
     lookup_url_kwarg: str = 'id'
 

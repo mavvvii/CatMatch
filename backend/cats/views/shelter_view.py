@@ -3,6 +3,8 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny, BasePermission
 from rest_framework.request import Request
+from rest_framework_simplejwt.authentication import JWTAuthentication
+
 
 from cats.models import Shelter
 from cats.serializers import ShelterListSerializer, ShelterDetailSerializer
@@ -13,6 +15,7 @@ from uuid import UUID
 
 class ShelterViewSet(viewsets.ModelViewSet):
     permission_classes: List[Type[BasePermission]] = [AllowAny]
+
     lookup_field: str = 'id'
     lookup_url_kwarg: str = 'id'
 
@@ -35,20 +38,20 @@ class ShelterViewSet(viewsets.ModelViewSet):
         queryset: QuerySet[Shelter] = self.get_queryset()
 
         try:
-            shelter: Shelter = queryset.get(id = shelter_id)
+            shelter: Shelter = queryset.get(id=shelter_id)
         except Shelter.DoesNotExist:
-            return Response({'detail': 'Cat not found'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({'detail': 'Shelter not found'}, status=status.HTTP_404_NOT_FOUND)
 
         serializer: ShelterDetailSerializer = self.get_serializer(shelter)
 
         return Response(serializer.data)
 
     def create(self, request: Request, *args, **kwargs):
-        serializer: ShelterDetailSerializer = self.get_serializer(data = request.data)
+        serializer: ShelterDetailSerializer = self.get_serializer(data=request.data)
 
         if serializer.is_valid():
             serializer.save()
-            return Response(ShelterDetailSerializer(serializer.instance).data, status=status.HTTP_201_CREATED)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def update(self, request: Request, *args, **kwargs):
@@ -56,9 +59,9 @@ class ShelterViewSet(viewsets.ModelViewSet):
         queryset: QuerySet[Shelter] = self.get_queryset()
 
         try:
-            shelter: Shelter = queryset.get(id = shelter_id)
-        except Cat.DoesNotExist:
-            return Response({'detail': 'Cat not found'}, status=status.HTTP_404_NOT_FOUND)
+            shelter: Shelter = queryset.get(id=shelter_id)
+        except Shelter.DoesNotExist:
+            return Response({'detail': 'Shelter not found'}, status=status.HTTP_404_NOT_FOUND)
 
         serializer: ShelterDetailSerializer = self.get_serializer(shelter, data=request.data)
 
@@ -72,9 +75,9 @@ class ShelterViewSet(viewsets.ModelViewSet):
         queryset: QuerySet[Shelter] = self.get_queryset()
 
         try:
-            shelter: Shelter = queryset.get(id = shelter_id)
-        except Cat.DoesNotExist:
-            return Response({'detail': 'Cat not found'}, status=status.HTTP_404_NOT_FOUND)
+            shelter: Shelter = queryset.get(id=shelter_id)
+        except Shelter.DoesNotExist:
+            return Response({'detail': 'Shelter not found'}, status=status.HTTP_404_NOT_FOUND)
 
         serializer: ShelterDetailSerializer = self.get_serializer(shelter, data=request.data, partial=True)
 
@@ -88,9 +91,9 @@ class ShelterViewSet(viewsets.ModelViewSet):
         queryset: QuerySet[Shelter] = self.get_queryset()
 
         try:
-            shelter: Shelter = queryset.get(id = shelter_id)
-        except Cat.DoesNotExist:
-            return Response({'detail': 'Cat not found'}, status=status.HTTP_404_NOT_FOUND)
+            shelter: Shelter = queryset.get(id=shelter_id)
+        except Shelter.DoesNotExist:
+            return Response({'detail': 'Shelter not found'}, status=status.HTTP_404_NOT_FOUND)
 
         shelter.delete()
 

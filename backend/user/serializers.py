@@ -61,3 +61,22 @@ class UserLoginSerializer(serializers.ModelSerializer):
 
         data['user'] = user
         return data
+
+class UserDetailSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = '__all__'
+
+
+class UserUpdateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email', 'password']
+
+    def update(self, instance, validated_data):
+        password = validated_data.pop('password', None)
+        if password:
+            instance.set_password(password)  # Używamy set_password, aby zahaszować hasło
+        return super().update(instance, validated_data)
