@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+
+.bg-gradient-register {
+  min-height: 100vh;
+  background: linear-gradient(120deg, rgba(255, 175, 189, 0.8), rgba(255, 195, 160, 0.8), rgba(201, 255, 191, 0.8));
+  background-size: 400% 400%;
+  animation: gradient-fade 20s ease infinite;  /* Zmieniamy czas na 20s dla bardziej subtelnego efektu */
+  padding: 2rem;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+}
+
+@keyframes gradient-fade {
+  0% {
+    background: linear-gradient(120deg, rgba(255, 175, 189, 0.8), rgba(255, 195, 160, 0.8), rgba(201, 255, 191, 0.8));
+  }
+  25% {
+    background: linear-gradient(120deg, rgba(255, 195, 160, 0.8), rgba(201, 255, 191, 0.8), rgba(255, 175, 189, 0.8));
+  }
+  50% {
+    background: linear-gradient(120deg, rgba(201, 255, 191, 0.8), rgba(255, 175, 189, 0.8), rgba(255, 195, 160, 0.8));
+  }
+  75% {
+    background: linear-gradient(120deg, rgba(255, 175, 189, 0.8), rgba(255, 195, 160, 0.8), rgba(201, 255, 191, 0.8));
+  }
+  100% {
+    background: linear-gradient(120deg, rgba(255, 195, 160, 0.8), rgba(201, 255, 191, 0.8), rgba(255, 175, 189, 0.8));
+  }
+}
+
+/* Stylizacja nagłówka */
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #4f46e5;
+  background: linear-gradient(90deg, #4f46e5, #9333ea);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Przyciski */
+button {
+  padding: 1rem 2rem;  /* Zmniejszona szerokość i wysokość */
+  border-radius: 12px;
+  background: linear-gradient(45deg, #6b46c1, #9d4edd);
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 50%; /* Zmniejszona szerokość przycisku */
+  margin: 1rem auto; /* Wyśrodkowanie */
+  text-align: center; /* Wyśrodkowanie tekstu w przycisku */
+}
+
+button:hover {
+  background: linear-gradient(45deg, #9d4edd, #6b46c1);
+  transform: scale(1.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Linki */
+a {
+  color: #6366f1;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #4f46e5;
+  text-decoration: underline;
+}
+
+input,
+textarea {
+  text-align: center; /* Wyrównanie tekstu w poziomie */
+  line-height: normal; /* Upewnij się, że tekst nie wychodzi poza pole */
+  padding: 0.75rem;
+  font-size: 1.1rem; /* Nieco większa czcionka */
+  font-family: 'Poppins', sans-serif; /* Ustawiona czcionka */
+  font-weight: 500; /* Użycie średniej wagi czcionki */
+  color: #333; /* Przyjemny, ciemnoszary kolor tekstu */
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  width: 40%; /* Zmniejszona szerokość */
+  margin: 0 auto 1rem auto; /* Wyśrodkowanie */
+  box-sizing: border-box;
+  transition: all 0.3s ease; /* Płynne przejścia dla interakcji */
+}
+
+input:focus,
+textarea:focus {
+  border-color: #4f46e5;
+  outline: none;
+  transform: scale(1.05);
+  box-shadow: 0 0 8px rgba(79, 70, 229, 0.7); /* Ładny efekt podświetlenia */
+  background: #ffffff; /* Rozjaśnienie pola przy focus */
+}
+
+input:hover,
+textarea:hover {
+  transform: scale(1.02); /* Subtelniejsze powiększenie */
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #aaa; /* Ładny, jasnoszary placeholder */
+  font-style: italic; /* Styl kursywy dla placeholder */
+  font-size: 0.95rem; /* Nieco mniejszy tekst */
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1); /* Początkowy rozmiar */
+  }
+  30% {
+    transform: scale(2); /* Powiększenie */
+  }
+  50% {
+    transform: scale(3); /* Normalny rozmiar */
+  }
+  70% {
+    transform: scale(2); /* Lekko pomniejszone */
+  }
+  100% {
+    transform: scale(1); /* Powrót do normalnego rozmiaru */
+  }
+}
+
+.image-bouncing {
+  display: inline-block; /* Umożliwia używanie transformacji */
+  animation: bounce 2s ease-in-out infinite; /* Animacja, trwa 2s, z pętlą */
+}
+

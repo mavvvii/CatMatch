@@ -1,0 +1,131 @@
+/* Main Container */
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Wyśrodkowanie w poziomie */
+  justify-content: center; /* Wyśrodkowanie w pionie */
+  height: 100vh;
+  background-color: #1a202c; /* Dark background */
+  color: #fff; /* Kolor tekstu biały */
+  padding: 20px;
+  overflow: hidden;
+}
+
+/* Animowany napis - Edit Profile */
+.edit-profile-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #6b46c1; /* Fioletowy kolor */
+  text-align: center;
+  margin-bottom: 20px;
+  animation: fadeIn 2s ease-in-out; /* Animacja pojawiania się */
+}
+
+/* Animacja dla tytułu */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Profile Tiles (Kafelki) */
+.profile-tiles {
+  display: flex;
+  flex-direction: column; /* Kafelki pod sobą */
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 20px;
+}
+
+.profile-tile {
+  background-color: #2d3748; /* Ciemne tło kafelka */
+  padding: 20px;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 500px; /* Maksymalna szerokość */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  color: white;
+  text-align: center;
+}
+
+.profile-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.profile-tile h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+input {
+  display: block;
+  margin: 0 auto;
+}
+
+/* Przycisk Powrotu */
+.back-button {
+  background-color: #6b46c1; /* Fioletowy */
+  color: white;
+  padding: 12px 24px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.back-button:hover {
+  background-color: #805ad5; /* Jaśniejszy fiolet po najechaniu */
+}
+
+/* Styl dla rozwijanego menu */
+select, textarea, input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: none;
+  background-color: #2d3748;
+  color: white;
+  font-size: 16px;
+  display: block;
+  margin: 0 auto;  /* Wyśrodkowanie elementu */
+  text-align: center; /* Wyśrodkowanie tekstu w opcjach */
+}
+select option {
+  text-align: center;
+}
+
+select:focus, textarea:focus, input:focus {
+  outline: none;
+  border: 2px solid #6b46c1; /* Fioletowa obramówka po kliknięciu */
+}
+
+/* Styl dla przycisku dodawania kota */
+.profile-tile button {
+  background-color: #48bb78; /* Zielony */
+  color: white;
+  padding: 12px 24px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.profile-tile button:hover {
+  background-color: #38a169; /* Jaśniejszy zielony po najechaniu */
+}

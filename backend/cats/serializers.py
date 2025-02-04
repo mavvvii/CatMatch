@@ -4,7 +4,6 @@ from cats.models.shelter import Shelter
 from cats.models.cat import Cat
 from cats.models.cats_adopted import CatAdopted
 from cats.models.cat_photos import CatPhotos
-from user.models import User
 
 
 class CatListSerializer(serializers.ModelSerializer):
@@ -35,9 +34,33 @@ class ShelterDetailSerializer(serializers.ModelSerializer):
         model = Shelter
         fields = '__all__'
 
+    def create(self, validated_data):
+        return Shelter.objects.create(**validated_data)
+
+class CatAdoptedListSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = CatAdopted
+        fields = ['id', 'cat', 'user']
 
 class CatAdoptedDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CatAdopted
+        fields = '__all__'
+
+
+class CatPhotosListSerializer(serializers.ModelSerializer):
+    cat = serializers.PrimaryKeyRelatedField(queryset=Cat.objects.all())
+
+    class Meta:
+        model = CatPhotos
+        fields = ['id', 'photo', 'cat']
+
+
+class CatPhotosDetailSerializer(serializers.ModelSerializer):
+    cat = serializers.PrimaryKeyRelatedField(queryset=Cat.objects.all())
+
+    class Meta:
+        model = CatPhotos
         fields = '__all__'

@@ -1,0 +1,259 @@
+/* Main Container */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Wyśrodkowanie w poziomie */
+  justify-content: flex-start;
+  height: 100vh;
+  background-color: #1a202c; /* Dark background */
+  color: #fff; /* Kolor tekstu biały */
+  padding: 20px;
+  overflow: hidden;
+}
+
+.menu-button {
+  background-color: #6b46c1; /* Fioletowy */
+  color: #fff; /* Biały tekst */
+  padding: 16px 32px; /* Wewnętrzny margines */
+  border-radius: 12px; /* Zaokrąglenie */
+  font-size: 20px; /* Rozmiar tekstu */
+  font-weight: 600; /* Pogrubienie */
+  cursor: pointer; /* Kursor */
+  transition: background-color 0.3s ease; /* Animacja */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Cień */
+  white-space: nowrap; /* Zapobiega łamaniu tekstu */
+  text-align: center; /* Wyśrodkowanie poziome */
+  display: flex; /* Ustawienie flexbox */
+  align-items: center; /* Wyśrodkowanie pionowe */
+  justify-content: center; /* Wyśrodkowanie poziome */
+  min-width: 180px; /* Minimalna szerokość */
+}
+
+.menu-button:hover {
+  background-color: #805ad5; /* Jaśniejszy fiolet po najechaniu */
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  background-color: #2d3748; /* Tło dropdown */
+  border-radius: 8px; /* Zaokrąglenie krawędzi */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtelny cień */
+  padding: 10px 0; /* Wewnętrzne marginesy */
+  transition: all 0.3s ease; /* Animacja dla przejść */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Cienka obramówka */
+}
+
+/* Dropdown Item */
+.dropdown-item {
+  padding: 12px 24px; /* Większa szerokość */
+  font-size: 16px; /* Rozmiar tekstu */
+  cursor: pointer; /* Kursor */
+  color: #e2e8f0; /* Jasny tekst */
+  background-color: transparent; /* Domyślne tło */
+  transition: background-color 0.2s ease, padding-left 0.2s ease; /* Animacja */
+  border: none; /* Brak obramowania */
+  text-align: center; /* Wyśrodkowanie poziome */
+  display: flex; /* Ustawienie flexbox */
+  align-items: center; /* Wyśrodkowanie pionowe */
+  justify-content: center; /* Wyśrodkowanie poziome */
+}
+
+.dropdown-item:hover {
+  background-color: #4a5568; /* Kolor tła po najechaniu */
+  color: #ffffff; /* Biały tekst po najechaniu */
+  padding-left: 30px; /* Efekt przesunięcia na lewo przy hover */
+}
+
+.dropdown-item.logout {
+  color: #f56565; /* Czerwony tekst */
+}
+
+.dropdown-item.logout:hover {
+  background-color: #742a2a; /* Ciemnoczerwone tło po najechaniu */
+}
+
+.menu-button {
+  background-color: #6b46c1; /* Fioletowy */
+  color: #fff; /* Biały tekst */
+  padding: 16px 32px; /* Wewnętrzny margines */
+  border-radius: 12px; /* Zaokrąglenie */
+  font-size: 20px; /* Rozmiar tekstu */
+  font-weight: 600; /* Pogrubienie */
+  cursor: pointer; /* Kursor */
+  transition: background-color 0.3s ease; /* Animacja */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Cień */
+  white-space: nowrap; /* Zapobiega łamaniu tekstu */
+  text-align: center; /* Wyśrodkowanie poziome */
+  display: flex; /* Ustawienie flexbox */
+  align-items: center; /* Wyśrodkowanie pionowe */
+  justify-content: center; /* Wyśrodkowanie poziome */
+  min-width: 180px; /* Minimalna szerokość */
+}
+
+.menu-button:hover {
+  background-color: #805ad5; /* Jaśniejszy fiolet po najechaniu */
+}
+
+
+/* Cat Display Section */
+.cat-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Wyśrodkowanie kotów */
+  justify-content: center;
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #2d3748; /* Ciemny panel */
+  border-radius: 12px;
+  width: 80%; /* Szerokość sekcji */
+  max-width: 500px; /* Maksymalna szerokość */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Cat Name */
+.cat-display h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+  color: #f7fafc; /* Biały tekst */
+  text-transform: capitalize;
+}
+
+/* Cat Photo */
+.cat-photo {
+  width: 100%; /* Szerokość zdjęcia */
+  max-width: 320px; /* Maksymalna szerokość */
+  max-height: 240px; /* Maksymalna wysokość */
+  object-fit: cover; /* Dopasowanie zdjęcia */
+  border-radius: 12px; /* Zaokrąglone rogi */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Delikatny cień */
+  margin-bottom: 16px;
+}
+
+/* Buttons */
+.cat-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 320px;
+  gap: 10px;
+}
+
+.cat-buttons button {
+  flex: 1; /* Równy rozmiar przycisków */
+  padding: 12px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.cat-buttons button:hover {
+  transform: scale(1.05); /* Efekt powiększenia */
+}
+
+.cat-buttons .adopt-btn {
+  background-color: #48bb78; /* Zielony */
+}
+
+.cat-buttons .adopt-btn:hover {
+  background-color: #38a169;
+}
+
+.cat-buttons .skip-btn {
+  background-color: #e53e3e; /* Czerwony */
+}
+
+.cat-buttons .skip-btn:hover {
+  background-color: #c53030;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #2d3748;
+  padding: 24px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+  color: #edf2f7; /* Biały tekst */
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.modal-content h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #4a5568;
+  background-color: #1a202c;
+  color: white;
+  font-size: 16px;
+}
+
+.modal-content button {
+  background-color: #6b46c1;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modal-content button:hover {
+  background-color: #805ad5;
+}
+.notification-container {
+  position: fixed; /* Zmiana na fixed, aby była widoczna niezależnie od scrollowania */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Ustawienie na środek */
+  z-index: 9999; /* Zapewnia, że powiadomienie będzie na wierzchu */
+  width: 100%;
+  text-align: center;
+}
+
+.notification {
+  padding: 20px;
+  background-color: #4CAF50; /* Zielony kolor tła */
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* subtelny cień */
+  font-size: 16px;
+  font-weight: bold;
+  max-width: 90%;
+  margin: 0 auto;
+  animation: slide-in 0.5s ease-out;
+}
+
+/* Animacja dla powiadomienia */
+@keyframes slide-in {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

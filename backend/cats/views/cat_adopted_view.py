@@ -1,32 +1,35 @@
 from django.db.models import QuerySet
 from rest_framework import viewsets, status
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated, AllowAny, BasePermission
+from rest_framework.permissions import AllowAny, BasePermission
 from rest_framework.request import Request
-from rest_framework.serializers import ModelSerializer
 
 from cats.models import Cat, CatAdopted
 from user.models import User
-from cats.serializers import CatAdoptedDetailSerializer
+from cats.serializers import CatAdoptedListSerializer, CatAdoptedDetailSerializer
 
+from uuid import UUID
 from datetime import datetime
 from typing import List, Type
-from uuid import UUID
 
 
 class CatAdoptedViewSet(viewsets.ModelViewSet):
     permission_classes: List[Type[BasePermission]] = [AllowAny]
-    serializer_class: Type[ModelSerializer] = CatAdoptedDetailSerializer
 
     lookup_field: str = 'id'
     lookup_url_kwarg: str = 'id'
+
+    def get_serializer_class(self) -> Type[CatAdoptedListSerializer | CatAdoptedDetailSerializer]:
+        if self.action == 'list':
+            return CatAdoptedListSerializer
+        return CatAdoptedDetailSerializer
 
     def get_queryset(self) -> QuerySet[CatAdopted]:
         return CatAdopted.objects.all()
 
     def list(self, request: Request) -> Response:
         adopted_cats: QuerySet[CatAdopted] = self.get_queryset()
-        serializer: CatAdoptedDetailSerializer = self.get_serializer(adopted_cats, many = True)
+        serializer: CatAdoptedDetailSerializer = self.get_serializer(adopted_cats, many=True)
 
         return Response(serializer.data)
 
@@ -35,9 +38,9 @@ class CatAdoptedViewSet(viewsets.ModelViewSet):
         queryset: QuerySet[Cat] = self.get_queryset()
 
         try:
-            cat_adopted: CatAdopted = queryset.get(id = cat_adopted_id)
+            cat_adopted: CatAdopted = queryset.get(id=cat_adopted_id)
         except CatAdopted.DoesNotExist:
-            return Response({'detail': 'Adopted cat not found'}, status = status.HTTP_404_NOT_FOUND)
+            return Response({'detail': 'Adopted cat not found'}, status=status.HTTP_404_NOT_FOUND)
 
         serializer: CatAdoptedDetailSerializer = self.get_serializer(cat_adopted)
 
@@ -57,22 +60,22 @@ class CatAdoptedViewSet(viewsets.ModelViewSet):
                 )
 
         try:
-            cat: Cat = Cat.objects.get(id = cat_id)
-            user: User = User.objects.get(id = user_id)
+            cat: Cat = Cat.objects.get(id=cat_id)
+            user: User = User.objects.get(id=user_id)
         except Cat.DoesNotExist:
             return Response({'detail': 'Cat not found.'}, status=status.HTTP_404_NOT_FOUND)
         except User.DoesNotExist:
             return Response({'detail': 'User not found.'}, status=status.HTTP_404_NOT_FOUND)
 
-        if CatAdopted.objects.filter(cat = cat).exists():
+        if CatAdopted.objects.filter(cat=cat).exists():
             return Response(
                 {'detail': 'This cat has already been adopted.'},
                 status=status.HTTP_400_BAD_REQUEST
             )
 
         cat_adopted: CatAdopted = CatAdopted.objects.create(
-            cat = cat,
-            user = user,
+            cat=cat,
+            user=user,
             adoption_date=adoption_date or datetime.now().date()  # Jeśli adoption_date jest None, użyj dzisiejszej daty
         )
 
@@ -85,11 +88,11 @@ class CatAdoptedViewSet(viewsets.ModelViewSet):
         queryset: QuerySet[Cat] = self.get_queryset()
 
         try:
-            cat_adopted: CatAdopted = queryset.get(id = cat_adopted_id)
+            cat_adopted: CatAdopted = queryset.get(id=cat_adopted_id)
         except CatAdopted.DoesNotExist:
             return Response({'detail': 'Adopted cat not found'}, status=status.HTTP_404_NOT_FOUND)
 
-        serializer: CatAdoptedDetailSerializer = self.get_serializer(cat_adopted, data = request.data)
+        serializer: CatAdoptedDetailSerializer = self.get_serializer(cat_adopted, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -101,7 +104,7 @@ class CatAdoptedViewSet(viewsets.ModelViewSet):
         queryset: QuerySet[Cat] = self.get_queryset()
 
         try:
-            cat_adopted: CatAdopted = queryset.get(id = cat_adopted_id)
+            cat_adopted: CatAdopted = queryset.get(id=cat_adopted_id)
         except CatAdopted.DoesNotExist:
             return Response({'detail': 'Adopted cat not found'}, status=status.HTTP_404_NOT_FOUND)
 
@@ -117,7 +120,7 @@ class CatAdoptedViewSet(viewsets.ModelViewSet):
         queryset: QuerySet[Cat] = self.get_queryset()
 
         try:
-            cat_adopted: CatAdopted = queryset.get(id = cat_adopted_id)
+            cat_adopted: CatAdopted = queryset.get(id=cat_adopted_id)
         except CatAdopted.DoesNotExist:
             return Response({'detail': 'Adopted cat not found'}, status=status.HTTP_404_NOT_FOUND)
 
